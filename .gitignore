@@ -1,0 +1,6 @@
+node_modules
+package-lock.json
+bundle.js
+production
+src/firebase/firebaseConfig.ts
+dist/bundle.js
