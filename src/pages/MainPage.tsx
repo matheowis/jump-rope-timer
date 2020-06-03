@@ -43,13 +43,7 @@ const MainPage = () => {
   return (
     <div className={classes.root}>
       <CountCircle />
-      {/* <div className={classes.flexRow}>
-        <div className={classes.flexColumn}>
-          <div className={classes.circle}>
 
-          </div>
-        </div>
-      </div> */}
     </div>
   )
 }

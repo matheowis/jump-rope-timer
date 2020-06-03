@@ -1,1 +1,1 @@
-export * from './excercise'
+export * from './IExcerciseSet'
