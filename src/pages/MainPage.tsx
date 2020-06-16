@@ -14,34 +14,51 @@ const useStyles = makeStyles(theme => ({
   imageButton: {
     width: '20vh',
     height: '20vh',
-    borderRadius: '10vh'
+    borderRadius: '10vh',
+    [theme.breakpoints.down('md')]: {
+      width: '40vw',
+      height: '40vw',
+      borderRadius: '20vw',
+    }
+  },
+  buttonsMargin: {
+    width: '10vw',
+    [theme.breakpoints.down('md')]: {
+      width: '5vw',
+    }
+  },
+  buttonDivider: {
+    flex: 1
   }
 
 }))
 
 const MainPage = () => {
   const classes = useStyles();
+
+  const Func = {
+    start: () => { }
+  }
+
   return (
     <div className={classes.root}>
-      <CountCircle />
+      <CountCircle Func={Func} />
       <div style={{ display: 'flex' }}>
-        <div style={{ width: '10vw' }} />
+        <div className={classes.buttonsMargin} />
         <ImageButton
           className={classes.imageButton}
           src='./images/heavyRope.jpg'
           label='Heavy'
-          onClick={() => { }}
+          onClick={() => { Func.start(); }}
         />
-        {/* <div style={{ width: '20vh', height: '20vh', backgroundColor: green[500], borderRadius: '10vh' }}>Heavy</div> */}
-        <div style={{ flex: 1 }} />
+        <div className={classes.buttonDivider} />
         <ImageButton
           className={classes.imageButton}
           src='./images/lightRope.jpg'
           label='Light'
-          onClick={() => { }}
+          onClick={() => { Func.start(); }}
         />
-        {/* <div style={{ width: '20vh', height: '20vh', backgroundColor: green[500], borderRadius: '10vh' }}>Light</div> */}
-        <div style={{ width: '10vw' }} />
+        <div className={classes.buttonsMargin} />
       </div>
     </div>
   )

@@ -3,11 +3,10 @@ import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core';
 import { green, grey, red } from '@material-ui/core/colors';
 import { fonts } from '../constants/fonts';
+import TimeManager from '../TimeManager';
 
 const useStyles = makeStyles(theme => ({
   flexRow: {
-    // display: 'flex',
-    // justifyContent: 'center',
     position: 'relative',
     height: '70%',
     width: '100%'
@@ -63,11 +62,35 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-const CountCircle = () => {
-  const classes = useStyles();
+interface ICountCircle {
+  Func: {
+    start: () => any
+  }
+}
 
+const CountCircle = (props: ICountCircle) => {
+  const classes = useStyles();
   const timeRef = React.createRef<HTMLDivElement>();
   const milisecRef = React.createRef<HTMLDivElement>();
+  const timeManager = new TimeManager();
+
+  const setTime = (minutes: string, seconds: string, miliseconds: string) => {
+    if (timeRef.current)
+      timeRef.current.innerHTML = `${minutes}:${seconds}`;
+    if (milisecRef.current)
+      milisecRef.current.innerHTML = miliseconds;
+  }
+
+  props.Func.start = () => {
+    console.log('START')
+    timeManager.start(10000, ({ minutes, seconds, miliseconds }) => {
+      console.log('Time', `${minutes}:${seconds}:${miliseconds}`)
+      setTime(minutes, seconds, miliseconds);
+    }, ({ minutes, seconds, miliseconds }) => {
+      console.log('FINISH')
+      setTime(minutes, seconds, miliseconds);
+    })
+  }
 
   setTimeout(() => {
     if (timeRef.current) {

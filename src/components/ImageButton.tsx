@@ -9,15 +9,15 @@ const hoverAnimTime = '0.2s'
 const useStyles = makeStyles(theme => ({
   root: {
     position: 'relative',
-    // background: grey[600],
-    cursor:'pointer',
-    // boxShadow: '0px 0px 10px 0px #00000088',
-    transition:`box-shadow ${hoverAnimTime}`,
+    cursor: 'pointer',
+    boxShadow: '0px 0px 10px 0px #00000088',
+    transition: `box-shadow ${hoverAnimTime}`,
+    overflow: 'hidden',
     '&:hover': {
-    // boxShadow: '0px 0px 15px 0px #000000ff',
+      boxShadow: '0px 0px 15px 0px #000000ff',
       '& #icon': {
         filter: 'blur(2px)',
-        // opacity: 0.7
+        opacity: 0.7
       },
       '& #label': {
         opacity: 0.8
@@ -25,9 +25,9 @@ const useStyles = makeStyles(theme => ({
     }
   },
   img: {
-    width: '100%',
-    height: '100%',
-    borderRadius: '50%',
+    padding: '10%',
+    width: '80%',
+    height: '80%',
     objectFit: 'cover',
     transition: `filter ${hoverAnimTime}, opacity ${hoverAnimTime}`
   },
@@ -42,7 +42,7 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'center',
     fontFamily: fonts.base,
     fontSize: '200%',
-    color: grey[100],
+    color: grey[900],
     fontWeight: 600,
     opacity: 0,
     transition: `opacity ${hoverAnimTime}`
