@@ -82,21 +82,17 @@ const CountCircle = (props: ICountCircle) => {
   }
 
   props.Func.start = () => {
-    console.log('START')
-    timeManager.start(10000, ({ minutes, seconds, miliseconds }) => {
-      console.log('Time', `${minutes}:${seconds}:${miliseconds}`)
-      setTime(minutes, seconds, miliseconds);
-    }, ({ minutes, seconds, miliseconds }) => {
-      console.log('FINISH')
-      setTime(minutes, seconds, miliseconds);
-    })
+    timeManager.start(
+      10000,
+      // callback every frame
+      ({ minutes, seconds, miliseconds }) => {
+        setTime(minutes, seconds, miliseconds);
+      },
+      // callback on finish
+      ({ minutes, seconds, miliseconds }) => {
+        setTime(minutes, seconds, miliseconds);
+      })
   }
-
-  setTimeout(() => {
-    if (timeRef.current) {
-      timeRef.current.innerHTML = '00:01'
-    }
-  }, 1000);
 
   return (
     <div className={classes.flexRow}>
