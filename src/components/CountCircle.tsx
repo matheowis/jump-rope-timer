@@ -64,7 +64,7 @@ const useStyles = makeStyles(theme => ({
 
 interface ICountCircle {
   Func: {
-    start: () => any
+    start: (timeInMs: number) => any
   }
 }
 
@@ -81,9 +81,9 @@ const CountCircle = (props: ICountCircle) => {
       milisecRef.current.innerHTML = miliseconds;
   }
 
-  props.Func.start = () => {
+  props.Func.start = (timeInMs: number) => {
     timeManager.start(
-      10000,
+      timeInMs,
       // callback every frame
       ({ minutes, seconds, miliseconds }) => {
         setTime(minutes, seconds, miliseconds);

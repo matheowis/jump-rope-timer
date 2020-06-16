@@ -37,7 +37,7 @@ const MainPage = () => {
   const classes = useStyles();
 
   const Func = {
-    start: () => { }
+    start: (timeInMs: number) => { }
   }
 
   return (
@@ -49,14 +49,14 @@ const MainPage = () => {
           className={classes.imageButton}
           src='./images/heavyRope.jpg'
           label='Heavy'
-          onClick={() => { Func.start(); }}
+          onClick={() => { Func.start(90000); }}// 01:30
         />
         <div className={classes.buttonDivider} />
         <ImageButton
           className={classes.imageButton}
           src='./images/lightRope.jpg'
           label='Light'
-          onClick={() => { Func.start(); }}
+          onClick={() => { Func.start(150000); }}// 02:30
         />
         <div className={classes.buttonsMargin} />
       </div>
