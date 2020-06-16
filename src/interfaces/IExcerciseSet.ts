@@ -1,6 +1,6 @@
 import { ISetExcercise } from './ISetExcercise';
 
-type TIExerciseSet = 
+// type TIExerciseSet = 
 
 export interface IExerciseSet {
   excercises: ISetExcercise[]

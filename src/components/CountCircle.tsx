@@ -22,6 +22,13 @@ const useStyles = makeStyles(theme => ({
     width: '60vh',
     height: '60vh',
     borderRadius: '30vh',
+    [theme.breakpoints.down('md')]: {
+      left: 'calc(50% - 40vw)',
+      top: 48,
+      width: '80vw',
+      height: '80vw',
+      borderRadius: '40vw',
+    }
   },
   circleOn: {
     backgroundColor: `${green[500]}aa`,
@@ -37,18 +44,45 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'column',
     justifyContent: 'center',
     fontFamily: fonts.base,
-    fontSize: '12vh',
+    fontSize: '16vh',
     color: grey[100],
+    [theme.breakpoints.down('md')]: {
+      fontSize: '20vw',
+    },
+  },
+  milisec: {
+    position: 'absolute',
+    right: '-3vh',
+    bottom: '-2vh',
+    fontSize: '5vh',
+    [theme.breakpoints.down('md')]: {
+      right: '-3vw',
+      bottom: '-2vw',
+      fontSize: '5vw'
+    },
   }
 }))
 
 const CountCircle = () => {
   const classes = useStyles();
+
+  const timeRef = React.createRef<HTMLDivElement>();
+  const milisecRef = React.createRef<HTMLDivElement>();
+
+  setTimeout(() => {
+    if (timeRef.current) {
+      timeRef.current.innerHTML = '00:01'
+    }
+  }, 1000);
+
   return (
     <div className={classes.flexRow}>
       <div className={clsx(classes.circle, classes.circleOn)}>
         <div className={classes.verticalCenter}>
-          00:00:00
+          <div style={{ position: 'relative' }}>
+            <div ref={timeRef}>00:00</div>
+            <div ref={milisecRef} className={classes.milisec}>000</div>
+          </div>
         </div>
       </div>
     </div>

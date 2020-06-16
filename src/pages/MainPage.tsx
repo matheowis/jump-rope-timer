@@ -3,6 +3,7 @@ import clsx from 'clsx'
 import { makeStyles } from '@material-ui/core';
 import { green, grey, red } from '@material-ui/core/colors';
 import CountCircle from '../components/CountCircle';
+import ImageButton from '../components/ImageButton';
 
 
 const useStyles = makeStyles(theme => ({
@@ -10,32 +11,12 @@ const useStyles = makeStyles(theme => ({
     width: '100vw',
     height: '100vh',
   },
-  flexRow: {
-    display: 'flex',
-    justifyContent: 'center',
-    position: 'absolute',
-    height: '50%',
-  },
-  flexColumn: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-  },
-  circle: {
-    boxShadow: '0px 10px 30px 0px #00000088',
-    width: '40vh',
-    height: '40vh',
-    borderRadius: '20vh',
-  },
-  circleOn: {
-    backgroundColor: `${green[500]}aa`,
-  },
-  circleOff: {
-    backgroundColor: `${grey[500]}aa`,
-  },
-  circleStarting: {
-    backgroundColor: `${red[500]}aa`,
+  imageButton: {
+    width: '20vh',
+    height: '20vh',
+    borderRadius: '10vh'
   }
+
 }))
 
 const MainPage = () => {
@@ -43,7 +24,25 @@ const MainPage = () => {
   return (
     <div className={classes.root}>
       <CountCircle />
-
+      <div style={{ display: 'flex' }}>
+        <div style={{ width: '10vw' }} />
+        <ImageButton
+          className={classes.imageButton}
+          src='./images/heavyRope.jpg'
+          label='Heavy'
+          onClick={() => { }}
+        />
+        {/* <div style={{ width: '20vh', height: '20vh', backgroundColor: green[500], borderRadius: '10vh' }}>Heavy</div> */}
+        <div style={{ flex: 1 }} />
+        <ImageButton
+          className={classes.imageButton}
+          src='./images/lightRope.jpg'
+          label='Light'
+          onClick={() => { }}
+        />
+        {/* <div style={{ width: '20vh', height: '20vh', backgroundColor: green[500], borderRadius: '10vh' }}>Light</div> */}
+        <div style={{ width: '10vw' }} />
+      </div>
     </div>
   )
 }
