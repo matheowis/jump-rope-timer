@@ -32,7 +32,6 @@ class TimeManager {
   private _start = () => {
     const currentDate = new Date().getTime();
     const miliseconds = currentDate - this.startDate;
-    console.log('MILISCEONS', miliseconds >= this.length)
     if (miliseconds >= this.length) {
       cancelAnimationFrame(this.requestId);
       this.finish(this.GetTime(this.length));
@@ -49,6 +48,16 @@ class TimeManager {
     this.length = length;
     this._start();
   }
+
+  public stop = () => {
+    cancelAnimationFrame(this.requestId);
+    const currentDate = new Date().getTime();
+    const miliseconds = currentDate - this.startDate;
+    const timeObj = this.GetTime(miliseconds)
+    this.finish(timeObj);
+    return timeObj;
+  }
 }
 
 export default TimeManager;
+
