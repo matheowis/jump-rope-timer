@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/core';
 import { green, grey, red } from '@material-ui/core/colors';
 import CountCircle from '../components/CountCircle';
 import ImageButton from '../components/ImageButton';
+import TimerCilinder from '../my_modules/MWTimePicker/TimerCilinder';
 
 
 const useStyles = makeStyles(theme => ({
@@ -42,6 +43,7 @@ const MainPage = () => {
 
   return (
     <div className={classes.root}>
+      <TimerCilinder spread={80} maxValue={60}/>
       {/* <CountCircle Func={Func} />
       <div style={{ display: 'flex' }}>
         <div className={classes.buttonsMargin} />
