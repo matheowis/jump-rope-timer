@@ -47,8 +47,6 @@ const TimerCilinder = (props: ITimerCilinder) => {
     divRefs.forEach((ref, i) => {
       const pos = positions[i];
       const predPos = pos.rotatePrediction(rad, 8);
-      const visibleSegments = [6, 7, 0, 1, 2];
-      const sideSegments = [6, 2];
       if (ref.current) {
         const opacity = clamp((predPos.y + 20) / props.spread, 0, 1);
         ref.current.style.opacity = `${opacity}`;
