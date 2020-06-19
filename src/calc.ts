@@ -28,10 +28,13 @@ export class Vector2D {
   public rotatePrediction(rad: number, segmentsNum: number) {
     const ca = Math.cos(rad);
     const sa = Math.sin(rad);
-    let segment = Math.floor(this.segment + rad / (2 * Math.PI) * segmentsNum);
+    const x = ca * this.x - sa * this.y;
+    const y = sa * this.x + ca * this.y;
+    let segment = Math.floor(this.segment - rad / (2 * Math.PI) * segmentsNum)%segmentsNum;
+    if (segment < 0) segment += segmentsNum
     return {
-      x: ca * this.x - sa * this.y,
-      y: sa * this.x + ca * this.y,
+      x,
+      y,
       segment,
     }
   }
