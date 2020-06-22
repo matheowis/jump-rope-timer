@@ -82,7 +82,7 @@ const CountCircle = (props: ICountCircle) => {
   }
 
   props.Func.start = (timeInMs: number) => {
-    timeManager.start(
+    timeManager.startFromEnd(
       timeInMs,
       // callback every frame
       ({ minutes, seconds, miliseconds }) => {

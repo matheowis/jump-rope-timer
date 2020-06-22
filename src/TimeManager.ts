@@ -19,7 +19,7 @@ class TimeManager {
   private time = 0;
 
   private callback = (time: IGetTime) => { };
-  
+
   private finish = (time: IGetTime) => { }
 
   private GetTime = (ms: number): IGetTime => {
@@ -48,14 +48,15 @@ class TimeManager {
 
   private _startFromEnd = () => {
     const currentDate = new Date().getTime() + this.time;
-    const miliseconds = this.length - currentDate - this.startDate;
+    const miliseconds = this.length - (currentDate - this.startDate);
+    console.log({miliseconds})
     if (miliseconds <= 0) {
       cancelAnimationFrame(this.requestId);
       this.finish(this.GetTime(0));
       return;
     }
     this.callback(this.GetTime(miliseconds));
-    this.requestId = requestAnimationFrame(this._start);
+    this.requestId = requestAnimationFrame(this._startFromEnd);
   }
 
   public start = (length: number, callback: (time: IGetTime) => any, finish: (time: IGetTime) => any) => {

@@ -45,7 +45,6 @@ const TimerCilinder = (props: ITimerCilinder) => {
 
   const setCPosition = (rad: number) => {
     // TODO need to add value snaping
-    // value.current = positions[0].rotatePrediction(rad, 8).segment;
     value.current = Math.floor(rad / (2 * Math.PI) * 8);
     divRefs.forEach((ref, i) => {
       const pos = positions[i];
@@ -56,14 +55,14 @@ const TimerCilinder = (props: ITimerCilinder) => {
         ref.current.style.top = `${predPos.x + (props.spread / 2)}px`;
         ref.current.style.zIndex = `${Math.floor(predPos.y + props.spread / 2)}`;
         ref.current.innerHTML = getItemValue(predPos.segment)
-        console.log({
-          ref: ref.current,
-          opacity,
-          predPos,
-          pos,
-          zIndex: ref.current.style.zIndex,
-          val: predPos.segment % 8
-        })
+        // console.log({
+        //   ref: ref.current,
+        //   opacity,
+        //   predPos,
+        //   pos,
+        //   zIndex: ref.current.style.zIndex,
+        //   val: predPos.segment % 8
+        // })
       }
     })
   }
@@ -90,8 +89,6 @@ const TimerCilinder = (props: ITimerCilinder) => {
 
   const handleMouseMove = (event: MouseEvent) => {
     if (active.current) {
-      // if (event.clientY - clickHeight.current > 0 && value.current >= 60) return;
-      // if (event.clientY - clickHeight.current < 0 && value.current <= 0) return;
       setCPosition((event.clientY - clickHeight.current) / 10);
     }
   }

@@ -43,8 +43,8 @@ const MainPage = () => {
 
   return (
     <div className={classes.root}>
-      <TimerCilinder spread={80} maxValue={60}/>
-      {/* <CountCircle Func={Func} />
+      {/* <TimerCilinder spread={80} maxValue={60}/> */}
+      <CountCircle Func={Func} />
       <div style={{ display: 'flex' }}>
         <div className={classes.buttonsMargin} />
         <ImageButton
@@ -61,7 +61,7 @@ const MainPage = () => {
           onClick={() => { Func.start(150000); }}// 02:30
         />
         <div className={classes.buttonsMargin} />
-      </div> */}
+      </div>
     </div>
   )
 }
